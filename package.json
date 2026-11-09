@@ -1,0 +1,26 @@
+{
+  "name": "live-dom-reversible-ai-sanitizer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Chrome MV3 extension that masks secrets before they reach an AI chat and restores them live in the page. Fully local.",
+  "license": "UNLICENSED",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "test:e2e": "xvfb-run -a node test/e2e/e2e.mjs",
+    "icons": "python3 tools/make-icons.py",
+    "package": "bash scripts/package.sh"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "jsdom": "^26.0.0",
+    "playwright-core": "1.56.0",
+    "prosemirror-commands": "^1.7.2",
+    "prosemirror-history": "^1.5.1",
+    "prosemirror-keymap": "^1.2.3",
+    "prosemirror-model": "^1.25.12",
+    "prosemirror-schema-basic": "^1.2.5",
+    "prosemirror-state": "^1.4.4",
+    "prosemirror-view": "^1.42.6",
+    "quill": "^2.0.3"
+  }
+}

@@ -1,0 +1,86 @@
+:root {
+  --bg: #f7f7f8;
+  --card: #ffffff;
+  --text: #18181b;
+  --muted: #6b7280;
+  --line: #e4e4e7;
+  --accent: #0d9488;
+  --accent-soft: #ccfbf1;
+  --warn: #b45309;
+  --warn-soft: #fef3c7;
+  --danger: #b91c1c;
+  --field: #fafafa;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111113;
+    --card: #1b1b1f;
+    --text: #f4f4f5;
+    --muted: #a1a1aa;
+    --line: #2e2e34;
+    --accent: #2dd4bf;
+    --accent-soft: rgba(45, 212, 191, 0.16);
+    --warn: #fcd34d;
+    --warn-soft: rgba(251, 191, 36, 0.16);
+    --danger: #fca5a5;
+    --field: #141417;
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  width: 348px;
+  padding: 12px;
+  background: var(--bg);
+  color: var(--text);
+  font: 13px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.top { display: flex; align-items: center; gap: 10px; padding: 2px 2px 12px; }
+.top img { border-radius: 7px; }
+.title { flex: 1; min-width: 0; }
+h1 { margin: 0; font-size: 15px; line-height: 1.2; }
+.title p { margin: 1px 0 0; color: var(--muted); font-size: 12px; }
+h2 { margin: 0 0 8px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px; margin-bottom: 10px; }
+.card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+.card-head h2 { margin: 0; }
+.muted { margin: 0 0 8px; color: var(--muted); font-size: 12px; }
+code { font: 11.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--field); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
+
+.chip { font-size: 11px; padding: 2px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.chip.masked { background: var(--warn-soft); color: var(--warn); }
+.chip.idle { background: var(--field); color: var(--muted); border: 1px solid var(--line); }
+
+.btn-row { display: flex; gap: 6px; }
+.btn-row[hidden] { display: none; }
+button { font: inherit; cursor: pointer; color: var(--text); background: var(--field); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; flex: 1; }
+button:hover { border-color: var(--accent); }
+button.danger { color: var(--danger); flex: 0 0 auto; }
+button:disabled { opacity: 0.5; cursor: default; }
+
+.opt { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; cursor: pointer; }
+.opt + .opt { border-top: 1px solid var(--line); }
+.opt input { margin: 3px 0 0; accent-color: var(--accent); flex: none; width: 15px; height: 15px; }
+.opt span { display: flex; flex-direction: column; min-width: 0; }
+.opt b { font-weight: 600; }
+.opt small { color: var(--muted); font-size: 12px; }
+.grid { display: grid; grid-template-columns: 1fr; }
+.opt.compact { padding: 5px 0; align-items: center; }
+.opt.compact input { margin: 0; }
+
+textarea { width: 100%; resize: vertical; min-height: 78px; padding: 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--field); color: var(--text); font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+textarea:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.saved { min-height: 16px; margin-top: 4px; font-size: 11px; color: var(--accent); }
+
+.switch { position: relative; width: 38px; height: 22px; flex: none; }
+.switch input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; z-index: 1; }
+.slider { position: absolute; inset: 0; border-radius: 999px; background: var(--line); transition: background 0.15s; }
+.slider::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: transform 0.15s; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }
+.switch input:checked + .slider { background: var(--accent); }
+.switch input:checked + .slider::after { transform: translateX(16px); }
+.switch input:focus-visible + .slider { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+footer p { margin: 2px 4px 0; color: var(--muted); font-size: 11.5px; }

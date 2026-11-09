@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Live-DOM Reversible AI Sanitizer",
+  "short_name": "AI Sanitizer",
+  "version": "1.0.0",
+  "description": "Masks secrets, emails and databases before they reach the AI, and restores them live on screen as it replies. 100% local.",
+  "minimum_chrome_version": "100",
+  "permissions": ["clipboardRead", "clipboardWrite", "storage"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*",
+        "https://claude.ai/*",
+        "https://gemini.google.com/*"
+      ],
+      "js": [
+        "src/shared/prefs.js",
+        "src/core/detectors.js",
+        "src/core/vault.js",
+        "src/core/engine.js",
+        "src/content/composer.js",
+        "src/content/dom-rehydrate.js",
+        "src/content/copy.js",
+        "src/content/ui.js",
+        "src/content/main.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_title": "AI Sanitizer",
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Sanitizer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="top">
+    <img src="../../icons/icon48.png" alt="" width="28" height="28">
+    <div class="title">
+      <h1>AI Sanitizer</h1>
+      <p>Masked going in, restored coming out.</p>
+    </div>
+    <label class="switch" title="Master switch">
+      <input type="checkbox" id="enabled" aria-label="Enable AI Sanitizer">
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <section class="card" id="tab-card">
+    <div class="card-head">
+      <h2>This tab</h2>
+      <span class="chip" id="tab-state">checking…</span>
+    </div>
+    <p class="muted" id="tab-msg"></p>
+    <div class="btn-row" id="tab-actions">
+      <button type="button" id="btn-reveal">Show tokens</button>
+      <button type="button" id="btn-mask">Mask message box</button>
+      <button type="button" id="btn-clear" class="danger">Clear vault</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Protection</h2>
+    <label class="opt"><input type="checkbox" id="interceptPaste"><span><b>Mask on paste</b><small>Replace sensitive text before it reaches the input.</small></span></label>
+    <label class="opt"><input type="checkbox" id="liveRestore"><span><b>Restore live in replies</b><small>Show your real values on screen as the AI streams.</small></span></label>
+    <label class="opt"><input type="checkbox" id="restoreCopy"><span><b>Restore on copy</b><small>“Copy code” and Ctrl+C give original values.</small></span></label>
+    <label class="opt"><input type="checkbox" id="guardSend"><span><b>Check before sending</b><small>Catches typed secrets when you press Enter or Send.</small></span></label>
+    <label class="opt"><input type="checkbox" id="showBadge"><span><b>Show status badge</b><small>Small shield docked on the right edge of the page.</small></span></label>
+  </section>
+
+  <section class="card">
+    <h2>What to mask</h2>
+    <div class="grid">
+      <label class="opt compact"><input type="checkbox" data-cat="secrets"><span>API keys, tokens, passwords</span></label>
+      <label class="opt compact"><input type="checkbox" data-cat="databases"><span>Database names &amp; DB hosts</span></label>
+      <label class="opt compact"><input type="checkbox" data-cat="emails"><span>Email addresses</span></label>
+      <label class="opt compact"><input type="checkbox" data-cat="network"><span>IPs &amp; internal hostnames</span></label>
+      <label class="opt compact"><input type="checkbox" data-cat="personal"><span>Phone, card, SSN, Aadhaar, PAN</span></label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Always mask</h2>
+    <p class="muted">One per line. Add a label with <code>=&gt;</code>, e.g. <code>Acme Corp =&gt; COMPANY</code>.</p>
+    <textarea id="customTerms" rows="4" spellcheck="false" placeholder="Acme Corp => COMPANY&#10;project-orion&#10;jane.doe"></textarea>
+    <div class="saved" id="saved" aria-live="polite"></div>
+  </section>
+
+  <footer>
+    <p>100% local. No network requests, no servers. The token map lives in tab memory only and disappears when the tab reloads.</p>
+  </footer>
+
+  <script src="../shared/prefs.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
